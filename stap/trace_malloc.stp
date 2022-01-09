@@ -1,0 +1,3 @@
+probe process("/lib/x86_64-linux-gnu/libc.so.6").function("__libc_malloc").return {
+    printf ("g_malloc: pid=%d \n", pid());
+}

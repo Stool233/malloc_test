@@ -1,0 +1,10 @@
+probe begin {
+    log("begin to probe\n")
+}
+
+probe kernel.function("SYSC_madvise") {
+    if (pid() == target()) {
+        printf("\nin %s: %s\n", probefunc(), $$vars)
+        print_backtrace();
+    }
+}
